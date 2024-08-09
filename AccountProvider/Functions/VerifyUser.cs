@@ -23,7 +23,7 @@ public class VerifyUser(ILogger<VerifyUser> logger, UserManager<UserEntity> user
             if (body != null)
             {
                 var verificationRequest = JsonConvert.DeserializeObject<VerificationRequest>(body);
-                if (verificationRequest != null && VerifyVerificationRequest(verificationRequest))
+                if (verificationRequest != null && ValidateVerificationRequest(verificationRequest))
                 {
                     // verify code
                     var isVerified = true;
@@ -53,10 +53,10 @@ public class VerifyUser(ILogger<VerifyUser> logger, UserManager<UserEntity> user
         return new UnauthorizedResult();
     }
 
-    private bool VerifyVerificationRequest(VerificationRequest request)
+    private bool ValidateVerificationRequest(VerificationRequest request)
     {
         return
-            string.IsNullOrEmpty(request.Email) &&
-            string.IsNullOrEmpty(request.VerificationCode);
+            !string.IsNullOrEmpty(request.Email) &&
+            !string.IsNullOrEmpty(request.VerificationCode);
     }
 }

@@ -48,7 +48,7 @@ public class SignIn(ILogger<SignIn> logger, SignInManager<UserEntity> signInMana
     private bool ValidateUserSignInRequest(UserSignInRequest request)
     {
         return
-            string.IsNullOrEmpty(request.Email) &&
-            string.IsNullOrEmpty(request.Password);
+            !string.IsNullOrEmpty(request.Email) &&
+            !string.IsNullOrEmpty(request.Password);
     }
 }
