@@ -62,9 +62,9 @@ public class SignUp(ILogger<SignUp> logger, UserManager<UserEntity> userManager)
     private bool ValidateUserRegistrationRequest(UserRegistrationRequest request)
     {
         return 
-            string.IsNullOrEmpty(request.Email) && 
-            string.IsNullOrEmpty(request.Password) && 
-            string.IsNullOrEmpty(request.FirstName) && 
-            string.IsNullOrEmpty(request.LastName);
+            !string.IsNullOrEmpty(request.Email) && 
+            !string.IsNullOrEmpty(request.Password) && 
+            !string.IsNullOrEmpty(request.FirstName) && 
+            !string.IsNullOrEmpty(request.LastName);
     }
 }
