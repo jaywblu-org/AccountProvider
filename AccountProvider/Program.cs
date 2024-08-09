@@ -15,7 +15,7 @@ var host = new HostBuilder()
         services.AddDbContext<DataContext>(x => x.UseSqlServer(context.Configuration.GetConnectionString("AccountProviderDB")));
         services.AddDefaultIdentity<UserEntity>(x =>
         {
-            x.SignIn.RequireConfirmedAccount = true;
+            x.SignIn.RequireConfirmedEmail = true;
             x.User.RequireUniqueEmail = true;
             x.Password.RequiredLength = 8;
         }).AddEntityFrameworkStores<DataContext>();
